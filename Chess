@@ -1,0 +1,121 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+
+
+int show_board(char c_b[8][8]);
+
+int move(char c_b[8][8], int s_pos[2], int d_pos[2]);
+
+int main(){
+
+  //First create chess board;
+
+
+  char c_b[8][8] = {{'r', 'h', 'b', 'k', 'q', 'b', 'h', 'r'},
+                    {'p','p','p','p','p','p','p','p'},
+                    {' ',' ',' ',' ',' ',' ',' ',' '},
+                    {' ',' ',' ',' ',' ',' ',' ',' '},
+                    {' ',' ',' ',' ',' ',' ',' ',' '},
+                    {' ',' ',' ',' ',' ',' ',' ',' '},
+                    {'P','P','P','P','P','P','P','P'},
+                    {'R','H','B','K','Q','B','H','R',}};
+
+  
+
+  int over = 0;
+
+  int s_pos[2] = {7,4}, d_pos[2]={5,4};
+
+  for(int i = 0; i < 5; i++){
+
+    scanf("%d%d%d%d", &s_pos[0], &s_pos[1], &d_pos[0], &d_pos[1]);
+
+
+
+    show_board(c_b);
+    usleep(1000000);
+    move(c_b, s_pos, d_pos);
+    show_board(c_b);
+  }
+  
+  
+
+
+
+
+
+  
+
+  
+}
+
+int show_board(char c_b[8][8]){
+
+  system("clear");
+
+
+
+  for(int i = 0; i < 8; i++){
+
+    
+
+    for(int j = 0; j < 8; j++){
+
+
+      if(j <= 6){
+        printf("%c  |  ", c_b[i][j]);
+      }
+      else{
+        printf("%c |   %d", c_b[i][j], i + 1);
+      }
+      
+      
+
+    
+  }
+
+    printf("\n");
+
+    printf("--- ----- ----- ----- ----- ----- ----- ----");
+
+    printf("\n");
+    printf("\n");
+  }
+
+  for(int k = 0; k < 8; k++){
+
+    
+
+    printf("%d     ", k + 1);
+  }
+
+  printf("\n");
+
+
+
+  
+
+}
+
+int move(char c_b[8][8], int s_pos[2], int d_pos[2]){
+
+
+  char piece =  c_b[s_pos[0]-1][s_pos[1]-1];
+
+
+
+ 
+
+  c_b[d_pos[0]-1][d_pos[1]-1] = piece;
+
+  
+
+
+
+  c_b[s_pos[0]-1][s_pos[1]-1] = ' ';
+
+
+  
+}
